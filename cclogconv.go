@@ -4,12 +4,13 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"github.com/oschwald/geoip2-golang"
 	"io"
 	"net"
 	"os"
 	"regexp"
 	"strings"
+
+	"github.com/oschwald/geoip2-golang"
 )
 
 const (
@@ -124,7 +125,7 @@ func (f filter) start(mmdbFilePath string, selectCc string, nFlag bool, vFlag bo
 		}
 
 		if ((selectCc == "" || ccMatchFlag) && !vFlag) || (!(selectCc == "" || ccMatchFlag) && vFlag) {
-			fmt.Fprintln(f.out, strings.TrimRight(lineBuf, " "))
+			fmt.Fprintln(f.out, strings.TrimSpace(lineBuf))
 		}
 		lineBuf = ""
 	}
